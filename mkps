@@ -1,0 +1,27 @@
+#!/bin/tcsh
+# ===========================================================================
+# 
+# mkps --
+# make for print_server
+# 
+# Ralf Moeller (www.ti.uni-bielefeld.de)
+# 
+#    Copyright (C) 2003
+#    Computer Engineering Group
+#    Faculty of Technology
+#    University of Bielefeld
+# 
+# 1.0 / 30. Oct 03 (rm)
+# - from scratch
+# 1.1 / 24. Nov 03 (rm)
+# - -D_REENTRANT: is that necessary???
+# 1.2 / 17. Aug 06 (rm)
+# - mkcs -> mkps (for print_server)
+# 1.3 / 04. Aug 17 (tm)
+# - Added flag OSX for switching tty path in printer_management.c
+#
+# ===========================================================================
+
+gcc -D_GNU_SOURCE -D_REENTRANT -DOSX -Wall -o print_server \
+    makeargv.c dbllinklist.c printer_management.c print_server.c \
+    UICI/restart.c UICI/uiciname.c UICI/uici.c -lpthread
